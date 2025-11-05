@@ -49,9 +49,13 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <div className="bg-[#00AEEF] p-2 rounded-lg">
-                <GraduationCap className="w-6 h-6 text-white" />
-              </div>
+             <div className="bg-[#FFFFFF] p-1 rounded-lg">
+              <img 
+                src="/logo.png" 
+                alt="ORIZ Academy Logo" 
+                className="w-8 h-8" 
+              />
+            </div>
               <div>
                 <h3 className="text-xl font-bold text-white">ORIZ Academy</h3>
                 <p className="text-xs text-white/70">Individual Tuition Concept</p>
