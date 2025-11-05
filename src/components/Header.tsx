@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { GraduationCap, Menu, X, Phone, MessageCircle } from 'lucide-react';
+import { Menu, X, Phone, MessageCircle } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,7 +22,7 @@ const Header = () => {
     { name: 'Contact', href: '#contact', id: 'contact' }
   ];
 
-  const handleNavClick = (e, href) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
@@ -44,9 +44,13 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center gap-3">
-            <div className="bg-[#00AEEF] p-2 rounded-lg">
-              <GraduationCap className="w-6 h-6 text-white" />
+          <div className="flex items-center gap-2">
+            <div className="bg-[#FFFFFF] p-1 rounded-lg">
+              <img 
+                src="/logo.png" 
+                alt="ORIZ Academy Logo" 
+                className="w-8 h-8" 
+              />
             </div>
             <div>
               <h1 className={`text-xl font-bold transition-colors duration-300 ${

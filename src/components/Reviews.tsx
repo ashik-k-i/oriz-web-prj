@@ -4,20 +4,20 @@ import { Star, Heart } from 'lucide-react';
 const Reviews = () => {
   const reviews = [
     {
-      name: 'Aisha Rahman',
-      image: 'https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop',
-      text: 'My daughter\'s confidence has improved so much after joining ORIZ! The one-on-one sessions are exactly what she needed.',
+      name: 'Fathima Raja',
+      image: '/reviews/1.jpg',
+      text: 'My name is Fathima Raja, and I am currently pursuing my Master’s in Statistics. I have been working with Oriz Academy, an individual online teaching platform, for the past 8 months. It has been a truly wonderful experience! The founder and team members are very friendly, supportive, and professional, which creates a positive and motivating teaching atmosphere. As a tutor, I’ve had the opportunity to teach more than 10 students during this time, and it’s been so fulfilling to see their academic growth and confidence improve. I’m proud to be part of Oriz Academy and truly appreciate the opportunity to grow as a tutor here. Thank you TEAM ORIZ',
       rating: 5
     },
     {
-      name: 'Rahul Menon',
-      image: 'https://images.pexels.com/photos/3777932/pexels-photo-3777932.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop',
-      text: 'Excellent teaching quality and flexible timings. Teachers give individual attention and keep parents updated regularly.',
+      name: 'Sumayya Konnola',
+      image: '/reviews/2.png',
+      text: 'Hi, I am Sumayya Konnola working as a teacher in ORIZ Academy. Being a part of this faculty, I can proudly say that I was able to guide some students who are going to be our future. I am well satisfied and happy with the facilities provided by them and also very much comfortable with the friendly ambience they built. Thank you so much ORIZ Academy for giving me a chance to enlighten our little futures.',
       rating: 5
     }
   ];
 
-  const renderStars = (rating) => {
+  const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => (
       <Star 
         key={index} 

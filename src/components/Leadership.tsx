@@ -1,61 +1,75 @@
 import React from 'react';
-import { Crown, Briefcase, Settings } from 'lucide-react';
 
 const Leadership = () => {
   const leaders = [
     {
       title: 'CEO',
-      name: 'Mohammed Rashid',
-      icon: Crown,
-      image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
-      gradient: 'from-purple-500 to-pink-500'
+      name: 'Abdul Kareem',
+      image: '/lead/ceo.jpg',
+      color: 'from-purple-500 to-pink-500'
     },
     {
       title: 'Managing Director',
-      name: 'Sarah Ahmed',
-      icon: Briefcase,
-      image: 'https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
-      gradient: 'from-blue-500 to-cyan-500'
+      name: 'Arshid Arif k',
+      image: '/lead/md.jpg',
+      color: 'from-blue-500 to-cyan-500'
     },
     {
       title: 'Manager',
-      name: 'Ali Hassan',
-      icon: Settings,
-      image: 'https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
-      gradient: 'from-green-500 to-teal-500'
+      name: 'Safa anshida',
+      image: '/lead/m.jpg',
+      color: 'from-green-500 to-teal-500'
     }
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#0C2D57] mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#0C2D57] mb-4">
             Leadership Team
           </h2>
-          <div className="w-16 h-1 bg-[#00AEEF] mx-auto mb-6"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#00AEEF] to-[#0C2D57] mx-auto rounded-full"></div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {leaders.map((leader, index) => (
             <div 
               key={index}
-              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group"
+              className="group relative"
             >
-              <div className="relative">
-                <img 
-                  src={leader.image} 
-                  alt={leader.name}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className={`absolute top-3 left-3 p-2 rounded-lg bg-gradient-to-r ${leader.gradient} text-white`}>
-                  <leader.icon className="w-4 h-4" />
+              <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2">
+                <div className="relative pt-12 pb-6 px-6">
+                  <div className="relative mx-auto w-32 h-32 mb-6">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${leader.color} rounded-full opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                        <img 
+                          src={leader.image} 
+                          alt={leader.name}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="text-center">
+                    <h3 className="font-bold text-lg text-[#0C2D57] mb-1">{leader.name}</h3>
+                    <div className="inline-block">
+                      <span className={`text-xs font-semibold px-3 py-1 rounded-full bg-gradient-to-r ${leader.color} text-white`}>
+                        {leader.title}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-6 flex justify-center">
+                    <div className={`h-1 w-16 bg-gradient-to-r ${leader.color} rounded-full opacity-60`}></div>
+                  </div>
                 </div>
               </div>
-              <div className="p-4 text-center">
-                <h3 className="font-bold text-[#0C2D57] text-sm mb-1">{leader.title}</h3>
-                <p className="text-xs text-gray-600">{leader.name}</p>
-              </div>
+              
+              {/* Decorative element */}
+              <div className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-gradient-to-br ${leader.color} rounded-full opacity-10 blur-xl`}></div>
             </div>
           ))}
         </div>

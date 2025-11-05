@@ -1,64 +1,61 @@
 import React from 'react';
-import { GraduationCap } from 'lucide-react';
 
 const Mentors = () => {
-  // Generate 17 mentors with diverse names and Pexels images
+  // Generate mentors with diverse names and Pexels images
   const mentors = [
-    { name: 'Dr. Fatima Khan', subject: 'Mathematics', image: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop' },
-    { name: 'Ahmed Ali', subject: 'English', image: 'https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop' },
-    { name: 'Priya Menon', subject: 'Malayalam', image: 'https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop' },
-    { name: 'Mohammed Salim', subject: 'Arabic', image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop' },
-    { name: 'Aisha Rahman', subject: 'Hindi', image: 'https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop' },
-    { name: 'Rajesh Kumar', subject: 'Science', image: 'https://images.pexels.com/photos/3777932/pexels-photo-3777932.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop' },
-    { name: 'Zainab Hussain', subject: 'Urdu', image: 'https://images.pexels.com/photos/3778603/pexels-photo-3778603.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop' },
-    { name: 'Suresh Nair', subject: 'Social Studies', image: 'https://images.pexels.com/photos/3785104/pexels-photo-3785104.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop' },
-    { name: 'Mariam Ahmed', subject: 'Islamic Studies', image: 'https://images.pexels.com/photos/3769999/pexels-photo-3769999.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop' },
-    { name: 'Anoop Krishnan', subject: 'Physics', image: 'https://images.pexels.com/photos/3763152/pexels-photo-3763152.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop' },
-    { name: 'Khadija Noor', subject: 'Chemistry', image: 'https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop' },
-    { name: 'Vishnu Pillai', subject: 'Biology', image: 'https://images.pexels.com/photos/3785090/pexels-photo-3785090.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop' },
-    { name: 'Safiya Begum', subject: 'Geography', image: 'https://images.pexels.com/photos/3771603/pexels-photo-3771603.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop' },
-    { name: 'Arjun Menon', subject: 'History', image: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop' },
-    { name: 'Nadia Khan', subject: 'Computer Science', image: 'https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop' },
-    { name: 'Ibrahim Sheikh', subject: 'Economics', image: 'https://images.pexels.com/photos/3777688/pexels-photo-3777688.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop' },
-    { name: 'Leela Devi', subject: 'Arts', image: 'https://images.pexels.com/photos/3785073/pexels-photo-3785073.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop' }
+    { name: 'Sumayya konnola', image: '/mentors/1.jpg' },
+    { name: 'Shyamili', image: '/mentors/2.jpg' },
+    { name: 'Nefida', image: '/mentors/3.jpg' },
+    { name: 'Shahida', image: '/mentors/4.jpg' },
+    { name: 'Anzila', image: '/mentors/5.jpg' },
+    { name: 'Shefeena', image: '/mentors/6.jpg' },
+    { name: 'Mushrifa Niyas', image: '/mentors/7.jpg' },
+    { name: 'Jaseela', image: '/mentors/8.jpg' },
+    { name: 'Amrutha', image: '/mentors/9.jpg' },
+    { name: 'Hisana thasni', image: '/mentors/10.jpg' },
+    { name: 'Mujeeba', image: '/mentors/11.jpg' },
+    { name: 'Anaswara', image: '/mentors/12.jpg' },
+    { name: 'Fathima hiba', image: '/mentors/13.jpg' },
+    { name: 'Shamna', image: '/mentors/14.jpg' },
+    { name: 'Fathima Raja', image: '/mentors/15.jpg' },
+    { name: 'Rishana', image: '/mentors/16.jpg' },
+    { name: 'Naseeba', image: '/mentors/17.jpg' }
   ];
 
   return (
-    <section id="mentors" className="py-16 bg-white">
+    <section id="mentors" className="py-16 bg-gray-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-10">
           <h2 className="text-2xl sm:text-3xl font-bold text-[#0C2D57] mb-2">
             Our Mentors
           </h2>
-          <p className="text-sm text-gray-600 mb-4">Meet our team of 17 expert educators</p>
-          <div className="w-16 h-1 bg-[#00AEEF] mx-auto mb-6"></div>
+          <p className="text-sm text-gray-600 mb-4">Meet our team of expert educators</p>
+          <div className="w-16 h-1 bg-[#00AEEF] mx-auto"></div>
         </div>
         
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
           {mentors.map((mentor, index) => (
             <div 
               key={index}
-              className="group bg-gray-50 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 hover:bg-[#00AEEF]/5"
+              className="flex flex-col items-center group"
             >
-              <div className="relative">
-                <img 
-                  src={mentor.image} 
-                  alt={mentor.name}
-                  className="w-full h-24 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute top-1 right-1 bg-[#00AEEF] p-1 rounded-full">
-                  <GraduationCap className="w-3 h-3 text-white" />
+              <div className="relative mb-3">
+                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-gray-200 group-hover:border-[#00AEEF] transition-colors duration-300">
+                  <img 
+                    src={mentor.image} 
+                    alt={mentor.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
-              <div className="p-2 text-center">
-                <h3 className="font-semibold text-[#0C2D57] text-xs mb-0.5 line-clamp-1">{mentor.name}</h3>
-                <p className="text-xs text-gray-600 line-clamp-1">{mentor.subject}</p>
+              <div className="text-center">
+                <h3 className="font-semibold text-[#0C2D57] text-sm">{mentor.name}</h3>
               </div>
             </div>
           ))}
         </div>
         
-        <div className="text-center mt-8">
+        <div className="text-center mt-10">
           <p className="text-sm text-gray-600">
             All mentors are qualified professionals with years of teaching experience
           </p>

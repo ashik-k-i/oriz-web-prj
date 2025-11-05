@@ -1,5 +1,5 @@
 import React from 'react';
-import { Languages, Calculator, Book } from 'lucide-react';
+import { Languages, Calculator, Book, Star, CheckCircle, Users, Calendar } from 'lucide-react';
 
 const CoursesSubjects = () => {
   const subjects = [
@@ -17,6 +17,13 @@ const CoursesSubjects = () => {
     'Madrassa Tuition'
   ];
 
+  const features = [
+    { icon: CheckCircle, text: 'Personalized study materials' },
+    { icon: Calendar, text: 'Regular progress assessments' },
+    { icon: Users, text: 'Doubt clearing sessions' },
+    { icon: Star, text: 'Parent-teacher interactions' }
+  ];
+
   return (
     <section className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,13 +34,13 @@ const CoursesSubjects = () => {
           <div className="w-16 h-1 bg-[#00AEEF] mx-auto mb-6"></div>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-8 mb-12">
           <div>
             <h3 className="text-xl font-semibold text-[#0C2D57] mb-6 flex items-center gap-2">
               <Book className="w-6 h-6 text-[#00AEEF]" />
               Subjects:
             </h3>
-            <div className="grid grid-cols-2 gap-3 mb-8">
+            <div className="grid grid-cols-2 gap-3">
               {subjects.map((subject, index) => (
                 <div key={index} className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-[#00AEEF]/5 transition-colors duration-300">
                   <subject.icon className={`w-5 h-5 ${subject.color}`} />
@@ -53,16 +60,22 @@ const CoursesSubjects = () => {
                 </div>
               ))}
             </div>
-            
-            <div className="mt-6 p-4 bg-[#00AEEF]/10 rounded-lg border-l-4 border-[#00AEEF]">
-              <h4 className="font-semibold text-[#0C2D57] text-sm mb-2">Special Features:</h4>
-              <ul className="text-xs text-gray-700 space-y-1">
-                <li>• Personalized study materials</li>
-                <li>• Regular progress assessments</li>
-                <li>• Doubt clearing sessions</li>
-                <li>• Parent-teacher interactions</li>
-              </ul>
-            </div>
+          </div>
+        </div>
+        
+        {/* Full-width Special Features section */}
+        <div className="bg-gradient-to-r from-[#00AEEF]/5 to-[#0C2D57]/5 rounded-lg p-6 border border-[#00AEEF]/20">
+          <h4 className="font-semibold text-[#0C2D57] text-lg mb-6 flex items-center gap-2">
+            <Star className="w-5 h-5 text-[#00AEEF]" />
+            Special Features:
+          </h4>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {features.map((feature, index) => (
+              <div key={index} className="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm">
+                <feature.icon className="w-5 h-5 text-[#00AEEF] mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-700">{feature.text}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -57,7 +57,7 @@ const WhyChoose = () => {
                 </div>
                 <div className="flex-1">
                   <h3 className="font-semibold text-[#0C2D57] text-sm mb-2 flex items-center gap-2">
-                    <span className="text-[#00AEEF]">➡</span>
+                   
                     {reason.title}
                   </h3>
                   <p className="text-xs text-gray-700 leading-relaxed">{reason.desc}</p>

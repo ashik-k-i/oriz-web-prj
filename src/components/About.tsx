@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Users, BookOpen, Target, TrendingUp, MessageSquare, ClipboardList, Headphones } from 'lucide-react';
 
 const About = () => {
@@ -11,6 +11,37 @@ const About = () => {
     { icon: ClipboardList, title: 'Regular Assessment', desc: 'Ongoing evaluation and feedback' },
     { icon: Headphones, title: 'Dedicated Support', desc: '24/7 academic assistance' }
   ];
+
+  // Duplicate the highlights array for seamless scrolling
+  const duplicatedHighlights = [...highlights, ...highlights];
+  const scrollContentRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number>();
+  const transformRef = useRef(0);
+
+  // Animation frame for smooth scrolling
+  const animate = () => {
+    if (scrollContentRef.current) {
+      transformRef.current -= 0.9; // Adjust speed here (smaller = slower)
+      
+      // Reset position when we've scrolled through one complete set
+      if (Math.abs(transformRef.current) >= scrollContentRef.current.scrollWidth / 2) {
+        transformRef.current = 0;
+      }
+      
+      scrollContentRef.current.style.transform = `translateX(${transformRef.current}px)`;
+    }
+    animationRef.current = requestAnimationFrame(animate);
+  };
+
+  // Start animation on mount
+  useEffect(() => {
+    animationRef.current = requestAnimationFrame(animate);
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, []);
 
   return (
     <section id="about" className="py-16 bg-white">
@@ -47,14 +78,25 @@ const About = () => {
         
         <div>
           <h4 className="text-lg font-semibold text-[#0C2D57] mb-6 text-center">Our Key Highlights</h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {highlights.map((item, index) => (
-              <div key={index} className="bg-gray-50 p-4 rounded-lg text-center hover:bg-[#00AEEF]/5 transition-colors duration-300">
-                <item.icon className="w-8 h-8 text-[#00AEEF] mx-auto mb-2" />
-                <h5 className="font-semibold text-[#0C2D57] text-sm mb-1">{item.title}</h5>
-                <p className="text-xs text-gray-600">{item.desc}</p>
-              </div>
-            ))}
+          <div className="overflow-hidden">
+            <div 
+              ref={scrollContentRef}
+              className="flex will-change-transform"
+              style={{ 
+                width: 'fit-content'
+              }}
+            >
+              {duplicatedHighlights.map((item, index) => (
+                <div 
+                  key={index} 
+                  className="bg-gray-50 p-4 rounded-lg text-center hover:bg-[#00AEEF]/5 transition-colors duration-300 min-w-[250px] mx-2 flex-shrink-0"
+                >
+                  <item.icon className="w-8 h-8 text-[#00AEEF] mx-auto mb-2" />
+                  <h5 className="font-semibold text-[#0C2D57] text-sm mb-1">{item.title}</h5>
+                  <p className="text-xs text-gray-600">{item.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

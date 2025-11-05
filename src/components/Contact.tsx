@@ -1,19 +1,17 @@
 import React from 'react';
-import { MapPin, Phone, Mail, Globe, Facebook, Instagram, MessageCircle, Youtube } from 'lucide-react';
+import { MapPin, Phone, Mail, Globe, Instagram, MessageCircle } from 'lucide-react';
 
 const Contact = () => {
   const contactInfo = [
-    { icon: MapPin, text: 'ORIZ Academy – Individual Tuition Concept' },
+    { icon: MapPin, text: 'Palam jn, Chelakkad po, Perinthlalmanna' },
     { icon: Phone, text: '+91 9946 042 500' },
-    { icon: Mail, text: 'info@orizacademy.com' },
+    { icon: Mail, text: 'orizacademy3@gmail.com' },
     { icon: Globe, text: 'www.orizacademy.com' }
   ];
 
   const socialLinks = [
-    { icon: Facebook, name: 'Facebook', href: '#' },
-    { icon: Instagram, name: 'Instagram', href: '#' },
-    { icon: MessageCircle, name: 'WhatsApp', href: 'https://wa.me/919946042500' },
-    { icon: Youtube, name: 'YouTube', href: '#' }
+    { icon: Instagram, name: 'Instagram', href: 'https://www.instagram.com/oriz_academy_?igsh=ZmEyc2czN2J5dXYx' },
+    { icon: MessageCircle, name: 'WhatsApp', href: 'https://wa.me/message/2R7AVGPVM5MPD1' }
   ];
 
   return (
@@ -48,6 +46,8 @@ const Contact = () => {
                   <a
                     key={index}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-2 bg-[#00AEEF] text-white rounded-full hover:bg-[#0099d4] transition-colors duration-300"
                     title={social.name}
                   >
@@ -74,14 +74,16 @@ const Contact = () => {
                     Call Now
                   </a>
                   <a 
-                    href="https://wa.me/919946042500"
+                    href="https://wa.me/message/2R7AVGPVM5MPD1"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 bg-green-500 text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-green-600 transition-all duration-300"
                   >
                     <MessageCircle size={18} />
                     WhatsApp
                   </a>
                   <a 
-                    href="mailto:info@orizacademy.com"
+                    href="mailto:orizacademy3@gmail.com"
                     className="flex items-center justify-center gap-2 bg-[#0C2D57] text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-[#0C2D57]/90 transition-all duration-300"
                   >
                     <Mail size={18} />

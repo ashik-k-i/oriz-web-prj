@@ -1,5 +1,5 @@
 import React from 'react';
-import { GraduationCap, Phone, Mail, MapPin, MessageCircle, Facebook, Instagram, Youtube } from 'lucide-react';
+import { GraduationCap, Phone, Mail, MapPin, MessageCircle, Instagram, ExternalLink } from 'lucide-react';
 
 const Footer = () => {
   const quickLinks = [
@@ -10,7 +10,7 @@ const Footer = () => {
     { name: 'Contact', href: '#contact', id: 'contact' }
   ];
 
-  const handleNavClick = (e, href) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
@@ -67,7 +67,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-2 text-sm text-white/80">
                 <Mail size={16} className="text-[#00AEEF]" />
-                <span>info@orizacademy.com</span>
+                <span>orizacademy3@gmail.com</span>
               </div>
             </div>
           </div>
@@ -117,17 +117,21 @@ const Footer = () => {
             <div className="mt-6">
               <h5 className="text-sm font-semibold text-white mb-3">Follow Us</h5>
               <div className="flex gap-3">
-                <a href="#" className="p-2 bg-white/10 rounded-lg hover:bg-[#00AEEF] transition-colors duration-300">
-                  <Facebook size={16} />
-                </a>
-                <a href="#" className="p-2 bg-white/10 rounded-lg hover:bg-[#00AEEF] transition-colors duration-300">
+                <a 
+                  href="https://www.instagram.com/oriz_academy_?igsh=ZmEyc2czN2J5dXYx" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-white/10 rounded-lg hover:bg-[#00AEEF] transition-colors duration-300"
+                >
                   <Instagram size={16} />
                 </a>
-                <a href="https://wa.me/919946042500" className="p-2 bg-white/10 rounded-lg hover:bg-[#00AEEF] transition-colors duration-300">
+                <a 
+                  href="https://wa.me/message/2R7AVGPVM5MPD1" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-white/10 rounded-lg hover:bg-[#00AEEF] transition-colors duration-300"
+                >
                   <MessageCircle size={16} />
-                </a>
-                <a href="#" className="p-2 bg-white/10 rounded-lg hover:bg-[#00AEEF] transition-colors duration-300">
-                  <Youtube size={16} />
                 </a>
               </div>
             </div>
@@ -143,9 +147,15 @@ const Footer = () => {
               </p>
             </div>
             <div className="text-center md:text-right">
-              <p className="text-xs text-white/60">
+              <a 
+                href="https://technotalim.com" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-white/60 hover:text-[#00AEEF] transition-colors duration-300 inline-flex items-center gap-1"
+              >
                 Designed and Developed by TechnoTaLim
-              </p>
+                <ExternalLink size={12} />
+              </a>
             </div>
           </div>
         </div>
@@ -164,7 +174,9 @@ const Footer = () => {
                 Call Now
               </a>
               <a 
-                href="https://wa.me/919946042500"
+                href="https://wa.me/message/2R7AVGPVM5MPD1"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-white text-[#0C2D57] px-6 py-3 rounded-full text-sm font-semibold hover:bg-gray-50 transition-all duration-300"
               >
                 <MessageCircle size={16} />

@@ -12,12 +12,14 @@ import Reviews from './components/Reviews';
 import Admission from './components/Admission';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import MediaGallery from './components/mediaGallery';
 
 function App() {
   return (
     <div className="min-h-screen">
       <Header />
       <Hero />
+      <MediaGallery />
       <About />
       <SyllabusCoverage />
       <WhyChoose />
