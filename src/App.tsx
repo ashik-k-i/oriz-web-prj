@@ -19,13 +19,13 @@ function App() {
     <div className="min-h-screen">
       <Header />
       <Hero />
+      <Leadership />
       <MediaGallery />
       <About />
       <SyllabusCoverage />
       <WhyChoose />
       <Programs />
       <CoursesSubjects />
-      <Leadership />
       <Mentors />
       <Reviews />
       <Admission />

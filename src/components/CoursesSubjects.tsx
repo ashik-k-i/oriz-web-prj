@@ -14,7 +14,8 @@ const CoursesSubjects = () => {
   const offerings = [
     'KG to 12 (All syllabus, All subjects)',
     'School Text Based Tuition',
-    'Madrassa Tuition'
+    'Madrassa Tuition',
+    'Basic foundation course'
   ];
 
   const features = [

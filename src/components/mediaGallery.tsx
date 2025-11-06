@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { X, Play, Image as ImageIcon } from "lucide-react";
+import React, { useState, useRef, useEffect } from "react";
+import { X, Play, Image as ImageIcon, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface MediaItem {
   id: number;
@@ -12,19 +12,53 @@ const replaceExt = (path: string, ext: string) => path.replace(/\.[^.]+$/i, ext)
 const MediaGallery = () => {
   const [selectedMedia, setSelectedMedia] = useState<string | null>(null);
   const [mediaType, setMediaType] = useState<"image" | "video" | null>(null);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   // Sample media data - mix of images and videos
   const mediaItems: MediaItem[] = [
-    { id: 1, type: "video", src: "/gallery/1.mp4" },
-    { id: 2, type: "image", src: "/gallery/2.jpeg" },
-    { id: 3, type: "image", src: "/gallery/3.jpeg" },
-    { id: 4, type: "image", src: "/gallery/4.jpeg" },
-    { id: 5, type: "image", src: "/gallery/5.jpeg" },
-    { id: 6, type: "image", src: "/gallery/6.jpeg" },
-    { id: 7, type: "image", src: "/gallery/7.jpeg" },
-    { id: 8, type: "image", src: "/gallery/8.jpeg" },
-    { id: 9, type: "video", src: "/gallery/9.mp4" },
+    { id: 1, type: "image", src: "/gallery/2.jpeg" },
+    { id: 2, type: "image", src: "/gallery/3.jpeg" },
+    { id: 3, type: "image", src: "/gallery/4.jpeg" },
+    { id: 4, type: "image", src: "/gallery/5.jpeg" },
+    { id: 5, type: "image", src: "/gallery/6.jpeg" },
+    { id: 6, type: "image", src: "/gallery/7.jpeg" },
+    { id: 7, type: "image", src: "/gallery/8.jpeg" },
+    { id: 8, type: "video", src: "/gallery/9.mp4" },
+    { id: 9, type: "video", src: "/gallery/1.mp4" },
   ];
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const updateArrows = () => {
+      setShowLeftArrow(el.scrollLeft > 0);
+      setShowRightArrow(el.scrollLeft < el.scrollWidth - el.clientWidth);
+    };
+
+    el.addEventListener("scroll", updateArrows, { passive: true });
+    updateArrows();
+
+    return () => el.removeEventListener("scroll", updateArrows);
+  }, []);
+
+  const handleScrollLeft = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const item = el.children[0] as HTMLElement | undefined;
+    const itemWidth = item?.getBoundingClientRect().width || 320;
+    el.scrollBy({ left: -(itemWidth + 16), behavior: "smooth" });
+  };
+
+  const handleScrollRight = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const item = el.children[0] as HTMLElement | undefined;
+    const itemWidth = item?.getBoundingClientRect().width || 320;
+    el.scrollBy({ left: itemWidth + 16, behavior: "smooth" });
+  };
 
   // Compute an initial thumbnail src for any media item
   const getThumbnail = (item: MediaItem): string => {
@@ -85,44 +119,81 @@ const MediaGallery = () => {
           </p>
         </div>
 
-        <div className="grid grid-rows-2 grid-flow-col auto-cols-[minmax(12rem,18rem)] gap-4 overflow-x-auto pb-2 pr-4 snap-x snap-mandatory">
-          {mediaItems.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => openMedia(item)}
-              className="relative group cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 snap-start"
-            >
-              <div className="aspect-square">
-                {/* Use <img> for both types — videos get a derived poster image */}
-                <img
-                  src={getThumbnail(item)}
-                  alt={item.type === "video" ? "Video thumbnail" : "Image thumbnail"}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  onError={(e) => handleImageError(e, item)}
-                  loading="lazy"
-                  data-tried=".jpeg" // mark the initial attempt so handler knows next fallbacks
-                />
+        <div className="relative">
+          <div
+            ref={scrollRef}
+            className="grid grid-rows-1 grid-flow-col auto-cols-[minmax(16rem,24rem)] gap-4 overflow-x-auto pb-2 pr-4 snap-x snap-mandatory"
+          >
+            {mediaItems.map((item) => (
+              <div
+                key={item.id}
+                onClick={() => openMedia(item)}
+                className="relative group cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 snap-start"
+              >
+                <div className="aspect-[3/4]">
+                  {/* Use <img> for both types — videos get a derived poster image */}
+                  <img
+                    src={getThumbnail(item)}
+                    alt={item.type === "video" ? "Video thumbnail" : "Image thumbnail"}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    onError={(e) => handleImageError(e, item)}
+                    loading="lazy"
+                    data-tried=".jpeg" // mark the initial attempt so handler knows next fallbacks
+                  />
 
-                {item.type === "video" && (
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors duration-300">
-                    <div className="bg-white/90 rounded-full p-3 group-hover:scale-110 transition-transform duration-300">
-                      <Play className="w-6 h-6 text-[#0C2D57]" />
-                    </div>
-                  </div>
-                )}
-
-                {item.type === "image" && (
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-2 left-2 right-2">
-                      <div className="bg-white/90 rounded-full p-2 inline-flex">
-                        <ImageIcon className="w-4 h-4 text-[#0C2D57]" />
+                  {item.type === "video" && (
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors duration-300">
+                      <div className="bg-white/90 rounded-full p-3 group-hover:scale-110 transition-transform duration-300">
+                        <Play className="w-6 h-6 text-[#0C2D57]" />
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
+
+                  {item.type === "image" && (
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-2 left-2 right-2">
+                        <div className="bg-white/90 rounded-full p-2 inline-flex">
+                          <ImageIcon className="w-4 h-4 text-[#0C2D57]" />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Left Arrow */}
+          <button
+            onClick={handleScrollLeft}
+            className={`
+              hidden lg:block
+              absolute left-4 top-1/2 -translate-y-1/2
+              bg-white/90 hover:bg-white rounded-full p-3 shadow-lg
+              transition-all duration-300 hover:scale-110
+              ${!showLeftArrow ? "opacity-0 pointer-events-none" : "opacity-100"}
+              z-10
+            `}
+            disabled={!showLeftArrow}
+          >
+            <ChevronLeft className="w-6 h-6 text-[#0C2D57]" />
+          </button>
+
+          {/* Right Arrow */}
+          <button
+            onClick={handleScrollRight}
+            className={`
+              hidden lg:block
+              absolute right-4 top-1/2 -translate-y-1/2
+              bg-white/90 hover:bg-white rounded-full p-3 shadow-lg
+              transition-all duration-300 hover:scale-110
+              ${!showRightArrow ? "opacity-0 pointer-events-none" : "opacity-100"}
+              z-10
+            `}
+            disabled={!showRightArrow}
+          >
+            <ChevronRight className="w-6 h-6 text-[#0C2D57]" />
+          </button>
         </div>
       </div>
 

@@ -19,7 +19,8 @@ const Mentors = () => {
     { name: 'Shamna', image: '/mentors/14.jpg' },
     { name: 'Fathima Raja', image: '/mentors/15.jpg' },
     { name: 'Rishana', image: '/mentors/16.jpg' },
-    { name: 'Naseeba', image: '/mentors/17.jpg' }
+    { name: 'Naseeba', image: '/mentors/17.jpg' },
+    { name: 'Sabira', image: '/mentors/18.jpg' }
   ];
 
   return (
