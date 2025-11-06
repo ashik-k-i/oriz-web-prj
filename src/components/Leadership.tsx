@@ -2,12 +2,14 @@ import React from 'react';
 
 const Leadership = () => {
   const leaders = [
+
     {
-      title: 'Manager',
-      name: 'Safa anshida',
-      image: '/lead/m.jpg',
-      color: 'from-green-500 to-teal-500'
+      title: 'Managing Director',
+      name: 'Arshid Arif k',
+      image: '/lead/md.jpg',
+      color: 'from-blue-500 to-cyan-500'
     },
+    
     {
       title: 'CEO',
       name: 'Abdul Kareem',
@@ -15,10 +17,10 @@ const Leadership = () => {
       color: 'from-purple-500 to-pink-500'
     },
     {
-      title: 'Managing Director',
-      name: 'Arshid Arif k',
-      image: '/lead/md.jpg',
-      color: 'from-blue-500 to-cyan-500'
+      title: 'Manager',
+      name: 'Safa anshida',
+      image: '/lead/m.jpg',
+      color: 'from-green-500 to-teal-500'
     }
     
   ];
